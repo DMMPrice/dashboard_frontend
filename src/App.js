@@ -1,13 +1,21 @@
 import React from 'react';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
+import GraphArea from './Components/GraphArea/GraphArea';
+import NavBar from './Components/NavBar/NavBar';
 import './App.css';
-import GraphData from "./Components/GraphData/GraphData";
 
 function App() {
     return (
-        <div className="App">
-            <h1>Hello World</h1>
-            <GraphData />
-        </div>
+        <Router>
+            <div className="App">
+                <NavBar/>
+                <Routes>
+                    <Route path="/consumed" element={<GraphArea type="(Actual)" path="consumed"/>}/>
+                    <Route path="/predict" element={<GraphArea type="(Pred)" path="predicted"/>}/>
+                    <Route path="/" element={<GraphArea type="demand"/>}/>
+                </Routes>
+            </div>
+        </Router>
     );
 }
 
