@@ -1,8 +1,10 @@
 import React from 'react';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import GraphArea from './Components/GraphArea/GraphArea';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import NavBar from './Components/NavBar/NavBar';
 import './App.css';
+import PredictForm from "./Components/PredictForm/PredictForm";
+import ConsumedArea from "./Components/Consumed/ConsumedArea";
+import PurchaseArea from "./Components/Purchase/PurchaseArea";
 
 function App() {
     return (
@@ -10,9 +12,9 @@ function App() {
             <div className="App">
                 <NavBar/>
                 <Routes>
-                    <Route path="/consumed" element={<GraphArea type="(Actual)" path="consumed"/>}/>
-                    <Route path="/predict" element={<GraphArea type="(Pred)" path="predicted"/>}/>
-                    <Route path="/" element={<GraphArea type="demand"/>}/>
+                    <Route path="/consumed" element={<ConsumedArea/>}/>
+                    <Route path="/" element={<PredictForm/>}/>
+                    <Route path='/purchase' element={<PurchaseArea/>}/>
                 </Routes>
             </div>
         </Router>

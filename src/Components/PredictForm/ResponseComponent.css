@@ -1,0 +1,52 @@
+.response-table-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.table-wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.table-section {
+    flex: 1;
+    margin: 0 10px;
+}
+
+.response-table-container-table {
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 18px;
+    text-align: center;
+    width: 100%;
+}
+
+.response-table-container-thead th, td {
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.controls label {
+    margin-right: 10px;
+}
+
+.controls select {
+    margin-right: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
