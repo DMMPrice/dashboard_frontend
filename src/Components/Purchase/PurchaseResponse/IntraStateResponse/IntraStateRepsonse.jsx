@@ -13,7 +13,7 @@ function IntraStateResponse() {
         const fetchCompanyData = async () => {
             try {
                 // Step 1: Fetch company names
-                const companyResponse = await fetch(`http://localhost:4000/intra-state/all`);
+                const companyResponse = await fetch(`http://13.233.144.75:4000/intra-state/all`);
                 const companies = await companyResponse.json();
 
                 // Step 2: Fetch total generation and price for each company
@@ -21,7 +21,7 @@ function IntraStateResponse() {
                     companies.map(async (company) => {
                         // console.log(company);
                         const response = await fetch(
-                            `http://localhost:4000/intra-state/${company}?start_date=${start_date}&end_date=${end_date}`
+                            `http://13.233.144.75:4000/intra-state/${company}?start_date=${start_date}&end_date=${end_date}`
                         );
                         const result = await response.json();
                         // console.log(result);

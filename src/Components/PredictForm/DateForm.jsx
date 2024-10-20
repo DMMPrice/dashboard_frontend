@@ -16,7 +16,7 @@ const DateForm = ({onResponse}) => {
         const formattedEndDate = moment(endDate).format('YYYY-MM-DD HH:mm');
 
         // Send data through GET request with params start_date and end_date
-        const url = new URL('http://localhost:4000/demand/data_with_sum');
+        const url = new URL('http://13.233.144.75:4000/demand/data_with_sum');
         url.searchParams.append('start_date', formattedStartDate);
         url.searchParams.append('end_date', formattedEndDate);
 

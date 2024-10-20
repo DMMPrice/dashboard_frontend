@@ -10,7 +10,7 @@ function RenewableResponse() {
 
     useEffect(() => {
         if (start_date && end_date) {
-            fetch(`http://localhost:4000/renewable?start_date=${start_date}&end_date=${end_date}`)
+            fetch(`http://13.233.144.75:4000/renewable?start_date=${start_date}&end_date=${end_date}`)
                 .then(response => response.json())
                 .then(data => setResponseData(data))
                 .catch(error => console.error('Error fetching data:', error));

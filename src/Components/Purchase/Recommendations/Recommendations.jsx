@@ -12,7 +12,7 @@ function Recommendations() {
     useEffect(() => {
         const fetchPredictions = async () => {
             try {
-                const url = new URL('http://localhost:5500/predict/recommend');
+                const url = new URL('http://3.110.183.59:5500/predict/recommend');
                 url.searchParams.append('total_demand', total_demand);
                 url.searchParams.append('start_date', start_date);
                 url.searchParams.append('end_date', end_date);

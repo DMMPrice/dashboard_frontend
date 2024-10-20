@@ -4,7 +4,7 @@ import moment from 'moment/moment';
 import './GraphArea.css';
 
 function GraphArea({type, path, color}) {
-    const apiUrl = process.env.REACT_APP_API_URL + `/demand/${path}`;
+    const apiUrl = `http://13.233.144.75:4000/demand/${path}`;
     const xAxisLabel = 'Year';
     const yAxisLabel = 'Demand';
     const heading = `Demand${type.charAt(0).toUpperCase() + type.slice(1)}`;
