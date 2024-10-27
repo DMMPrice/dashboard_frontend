@@ -10,12 +10,16 @@
     flex: 1 1 200px; /* Flex-grow, flex-shrink, and flex-basis */
 }
 
+.filter-component::selection {
+    background-color: #f0f3bd; /* Change to your desired color */
+}
+
 .filter-component button {
     padding: 5px 10px;
     margin-right: 10px;
     border: none;
     border-radius: 4px;
-    background-color: #007bff;
+    background-color: #028090;
     color: white;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -23,11 +27,11 @@
 }
 
 .filter-component button:hover {
-    background-color: #0056b3;
+    background-color: #00bfb2;
 }
 
 .filter-component button:active {
-    background-color: #004085;
+    background-color: #0ff3bd;
 }
 
 @media (max-width: 750px) {

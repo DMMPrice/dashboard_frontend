@@ -142,12 +142,12 @@ const PairColumnChart = () => {
         };
 
         loadAllData();
-    });
+    }, []);
 
     return (
         <div>
             {loading ? (
-                <div className="spinner">Loading...</div>
+                <div className="spinner"></div>
             ) : (
                 <Chart
                     options={chartData.options}

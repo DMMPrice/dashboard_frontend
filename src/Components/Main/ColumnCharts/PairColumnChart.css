@@ -1,5 +1,8 @@
 .spinner {
     font-size: 18px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
     text-align: center;
     padding: 20px;
 }

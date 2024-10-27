@@ -1,47 +1,46 @@
-import React, {useEffect, useState} from "react";
-import {ComposableMap, Geographies, Geography} from "react-simple-maps";
+import React, {useState} from 'react';
+import "./DemographicComponent.css";
+import {ComposableMap, Geographies, Geography, ZoomableGroup} from 'react-simple-maps';
+import countriesData from './countries-110m.json';
 
-const DemographicComponent = () => {
-    const [geoData, setGeoData] = useState(null);
-
-    useEffect(() => {
-        fetch("/india.topo.json")
-            .then(response => response.json())
-            .then(data => setGeoData(data))
-            .catch(error => console.error("Error fetching the JSON data:", error));
-    }, []);
+const DemographicMap = () => {
+    const [tooltipContent, setTooltipContent] = useState("");
 
     return (
-        <div>
-            <h2>Demographic Information</h2>
-            {geoData ? (
-                <ComposableMap projection="geoMercator">
-                    <Geographies geography={geoData}>
+        <div className='demographic-main'>
+            <ComposableMap data-tip="">
+                <ZoomableGroup>
+                    <Geographies geography={countriesData}>
                         {({geographies}) =>
-                            geographies.map((geo) => {
-                                const isGujarat = geo.properties.NAME_1 === "Gujarat";
-                                return (
-                                    <Geography
-                                        key={geo.rsmKey}
-                                        geography={geo}
-                                        fill={isGujarat ? "#FF5733" : "#DDD"}
-                                        stroke="#000"
-                                        style={{
-                                            default: {outline: "none"},
-                                            hover: {outline: "none"},
-                                            pressed: {outline: "none"},
-                                        }}
-                                    />
-                                );
-                            })
+                            geographies.map((geo) => (
+                                <Geography
+                                    key={geo.rsmKey}
+                                    geography={geo}
+                                    onMouseEnter={() => {
+                                        const {NAME} = geo.properties;
+                                        setTooltipContent(`${NAME}`);
+                                    }}
+                                    onMouseLeave={() => {
+                                        setTooltipContent("");
+                                    }}
+                                    style={{
+                                        default: {fill: "#028090", outline: "none"},
+                                        hover: {fill: "#00bfb2", outline: "none"},
+                                        pressed: {fill: "#f0f3bd", outline: "none"}
+                                    }}
+                                />
+                            ))
                         }
                     </Geographies>
-                </ComposableMap>
-            ) : (
-                <div>Loading...</div>
+                </ZoomableGroup>
+            </ComposableMap>
+            {tooltipContent && (
+                <div className="tooltip">
+                    {tooltipContent}
+                </div>
             )}
         </div>
     );
 };
 
-export default DemographicComponent;
+export default DemographicMap;

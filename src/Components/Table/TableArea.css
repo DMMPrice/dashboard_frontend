@@ -11,9 +11,16 @@
 }
 
 .table-area button {
+    background-color: #028090;
     margin-bottom: 10px;
     padding: 5px 10px;
     margin-left: 10px;
+}
+.table-area button:hover {
+    background-color: #026c7c;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transform: translateY(-2px);
+    color: #f0f3bd;
 }
 
 .table-area select {
@@ -48,8 +55,8 @@
 }
 
 .table-area th {
-    background-color: #007bff;
-    color: white;
+    background-color: #028090;
+    color: #f0f3bd;
     text-align: center;
 }
 

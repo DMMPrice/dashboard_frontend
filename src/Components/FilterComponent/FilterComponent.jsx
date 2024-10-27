@@ -1,14 +1,16 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import "./FilterComponent.css";
 
-function FilterComponent({ onFilter, setLoading }) {
+function FilterComponent({onFilter, setLoading}) {
     const [year, setYear] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
+    const [isStartDateSelected, setIsStartDateSelected] = useState(false);
+    const [isEndDateSelected, setIsEndDateSelected] = useState(false);
 
     const handleFilter = () => {
         setLoading(true);
-        onFilter({ year, startDate, endDate });
+        onFilter({year, startDate, endDate});
     };
 
     const handleClear = () => {
@@ -16,7 +18,9 @@ function FilterComponent({ onFilter, setLoading }) {
         setYear("");
         setStartDate("");
         setEndDate("");
-        onFilter({ year: "", startDate: "", endDate: "" });
+        setIsStartDateSelected(false);
+        setIsEndDateSelected(false);
+        onFilter({year: "", startDate: "", endDate: ""});
     };
 
     return (
@@ -28,16 +32,24 @@ function FilterComponent({ onFilter, setLoading }) {
                 onChange={(e) => setYear(e.target.value)}
             />
             <input
-                type="date"
+                type="datetime-local"
                 placeholder="Start Date"
                 value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
+                onChange={(e) => {
+                    setStartDate(e.target.value);
+                    setIsStartDateSelected(!!e.target.value);
+                }}
+                className={isStartDateSelected ? "selected" : ""}
             />
             <input
-                type="date"
+                type="datetime-local"
                 placeholder="End Date"
                 value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
+                onChange={(e) => {
+                    setEndDate(e.target.value);
+                    setIsEndDateSelected(!!e.target.value);
+                }}
+                className={isEndDateSelected ? "selected" : ""}
             />
             <button onClick={handleFilter}>Apply Filter</button>
             <button onClick={handleClear}>Clear Filter</button>

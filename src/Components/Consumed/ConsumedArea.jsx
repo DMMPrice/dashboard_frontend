@@ -57,7 +57,7 @@ function    ConsumedArea() {
     };
 
     return (
-        <div>
+        <div className="consumed-main">
             <h1>Consumed Electricity Vs Predicted Electricity</h1>
             <FilterComponent onFilter={handleFilter} setLoading={setLoading}/>
             <div className="submit-area-graph">

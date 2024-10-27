@@ -1,3 +1,8 @@
+.consumed-main{
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #f7fafc;
+}
 .submit-area-graph{
     display: flex;
     flex-direction: column;

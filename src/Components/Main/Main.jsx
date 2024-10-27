@@ -1,9 +1,12 @@
 import React, {useState, useEffect} from "react";
 import DetailContainer from "./Detail-Info/DetailContainer";
 import PairColumnChart from "./ColumnCharts/PairColumnChart";
+import DonutChart from "./Donut Chart/Donut";
+import DemographicComponent from "./DemographicComponent/DemographicComponent";
 
 import "./Detail-Info/DetailContainer.css";
 import "./main.css";
+
 
 function Main() {
     const [visible, setVisible] = useState(false);
@@ -53,6 +56,10 @@ function Main() {
             </div>
             <div className="main-column-chart">
                 <PairColumnChart/>
+            </div>
+            <div className="main-row-3">
+                <DonutChart/>
+                <DemographicComponent/>
             </div>
         </div>
     );

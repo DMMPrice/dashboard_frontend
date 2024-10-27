@@ -27,16 +27,16 @@ function GraphArea({data}) {
             {
                 label: "Demand (Pred)",
                 data: data.map((item) => item["Demand(Pred)"]),
-                borderColor: "red",
-                backgroundColor: "rgba(255, 0, 0, 0.2)",
-                fill: true,
+                borderColor: "#f0f3bd",
+                backgroundColor: "#f0f3bd",
+                fill: false,
             },
             {
                 label: "Demand (Actual)",
                 data: data.map((item) => item["Demand(Actual)"]),
-                borderColor: "blue",
-                backgroundColor: "rgba(0, 0, 255, 0.2)",
-                fill: true,
+                borderColor: "#028090",
+                backgroundColor: "#028090",
+                fill: false,
             }
         ],
     };
