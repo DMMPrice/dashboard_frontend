@@ -1,0 +1,64 @@
+.table-area {
+    align-items: center;
+    width: 90%;
+    padding: 20px;
+}
+
+.table-area input {
+    margin-bottom: 10px;
+    padding: 5px;
+    width: 200px;
+}
+
+.table-area button {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+
+.table-area select {
+    margin: 0 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.table-area select:hover {
+    background-color: #e6e6e6;
+}
+
+.table-area select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.table-area table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-area th, .table-area td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+.table-area th {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+}
+
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    font-size: 1.5rem;
+    color: #000;
+}

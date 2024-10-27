@@ -1,28 +1,81 @@
-import React from 'react';
-import GraphData from '../GraphData/GraphData';
-import moment from 'moment/moment';
-import './GraphArea.css';
+import React from "react";
+import {Line} from "react-chartjs-2";
+import {
+    Chart,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    LineElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler,
+    TimeScale
+} from 'chart.js';
+import 'chartjs-adapter-date-fns';
+import "./GraphArea.css";
 
-function GraphArea({type, path, color}) {
-    const apiUrl = `http://13.233.144.75:4000/demand/${path}`;
-    const xAxisLabel = 'Year';
-    const yAxisLabel = 'Demand';
-    const heading = `Demand${type.charAt(0).toUpperCase() + type.slice(1)}`;
-    const dataMapping = {
-        label: item => moment(item.TimeStamp).format('DD MM YYYY'),
+// Register the required components
+Chart.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, Filler, TimeScale);
+
+function GraphArea({data}) {
+    console.log("GraphArea data:", data); // Debugging log
+
+    const chartData = {
+        labels: data.map((item) => new Date(item.TimeStamp)), // Parse TimeStamp as Date
         datasets: [
             {
-                label: `Demand ${type.charAt(0).toUpperCase() + type.slice(1)}`,
-                data: item => item[`Demand${type}`],
-                borderColor: color || (type === '(Pred)' ? 'rgba(75,192,192,1)' : 'rgba(192,75,75,1)')
+                label: "Demand (Pred)",
+                data: data.map((item) => item["Demand(Pred)"]),
+                borderColor: "red",
+                backgroundColor: "rgba(255, 0, 0, 0.2)",
+                fill: true,
+            },
+            {
+                label: "Demand (Actual)",
+                data: data.map((item) => item["Demand(Actual)"]),
+                borderColor: "blue",
+                backgroundColor: "rgba(0, 0, 255, 0.2)",
+                fill: true,
             }
-        ]
+        ],
+    };
+
+    const options = {
+        responsive: true,
+        scales: {
+            x: {
+                type: 'time',
+                time: {
+                    tooltipFormat: 'MM dd yyyy ',
+                    displayFormats: {
+                        minute: 'MMM dd, yyyy HH:mm'
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Time'
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                position: 'top',
+            },
+            title: {
+                display: true,
+                text: 'Demand (Actual) vs Demand (Pred)',
+            },
+        },
+        animation: {
+            duration: 100,
+            easing: 'easeInOutQuad',
+        },
     };
 
     return (
         <div className="graph-area">
-            <GraphData apiUrl={apiUrl} xAxisLabel={xAxisLabel} yAxisLabel={yAxisLabel} dataMapping={dataMapping}
-                       heading={heading}/>
+            <Line data={chartData} options={options}/>
         </div>
     );
 }

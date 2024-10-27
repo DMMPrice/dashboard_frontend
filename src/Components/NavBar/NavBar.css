@@ -1,32 +1,36 @@
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffffff;
-    color: #000000;
+    padding-right: 1rem;
+    padding-left: 1rem;
+    background-color: #ffffff; /* Set background color to white */
 }
 
-.navbar-heading {
-    margin: 0;
+/* Customize the navbar brand color */
+.navbar-brand {
+    color: #000000 !important; /* Set brand text color to black */
 }
 
-.navbar-links {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    margin: 0;
-    padding: 0;
+/* Customize the navbar link colors */
+.navbar-nav .nav-link {
+    color: #000000 !important; /* Set link text color to black */
 }
 
-.navbar-links li {
-    margin: 0;
+/* Customize the navbar link hover colors */
+.navbar-nav .nav-link:hover {
+    color: #555555 !important; /* Set link hover color to a darker shade of black */
 }
 
-.navbar-links a {
-    color: #000000;
-    text-decoration: none;
+/* Customize the dropdown menu background color */
+.dropdown-menu {
+    background-color: #ffffff; /* Set dropdown background color to white */
 }
 
-.navbar-links a:hover {
-    text-decoration: underline;
+/* Customize the dropdown item colors */
+.dropdown-item {
+    color: #000000 !important; /* Set dropdown item text color to black */
+}
+
+/* Customize the dropdown item hover colors */
+.dropdown-item:hover {
+    background-color: #f0f0f0; /* Set dropdown item hover background color to a light grey */
+    color: #000000 !important; /* Set dropdown item hover text color to black */
 }

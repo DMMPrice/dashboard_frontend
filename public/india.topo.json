@@ -1,0 +1,26 @@
+{
+  "type": "Topology",
+  "objects": {
+    "india": {
+      "type": "GeometryCollection",
+      "geometries": [
+        {
+          "type": "Polygon",
+          "properties": {
+            "NAME_1": "Gujarat"
+          },
+          "arcs": [
+            [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+          ]
+        }
+      ]
+    }
+  },
+  "arcs": [
+    [[0, 0], [1, 1], [2, 2], [3, 3], [4, 4], [5, 5], [6, 6], [7, 7], [8, 8], [9, 9], [10, 10]]
+  ],
+  "transform": {
+    "scale": [0.0001, 0.0001],
+    "translate": [68.1766451354, 6.5546079002]
+  }
+}

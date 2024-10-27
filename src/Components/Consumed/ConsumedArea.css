@@ -1,5 +1,7 @@
 .submit-area-graph{
     display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
     justify-content: center;
     align-items: center;
     margin-top: 20px;
