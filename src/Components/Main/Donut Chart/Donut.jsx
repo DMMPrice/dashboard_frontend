@@ -9,7 +9,7 @@ const DonutChart = () => {
         options: {
             chart: {
                 type: 'donut',
-                height: 250,
+                height: 800,
                 animations: {
                     enabled: true,
                     easing: 'easeinout',
@@ -63,7 +63,7 @@ const DonutChart = () => {
                 breakpoint: 480,
                 options: {
                     chart: {
-                        width: 400
+                        width: 800
                     },
                     legend: {
                         position: 'bottom'
@@ -136,8 +136,8 @@ const DonutChart = () => {
                         options={chartData.options}
                         series={chartData.series}
                         type="donut"
-                        height={300}
-                        width={200}
+                        height={390}
+                        width={500}
                     />
                 </div>
             )}
