@@ -12,25 +12,24 @@ function Recommendations() {
     useEffect(() => {
         const fetchPredictions = async () => {
             try {
-                // const predictUrl = "http://192.168.29.181:5500" + '/predict/recommend';
-                const predictUrl = "http://13.201.130.72:5500" + '/predict/recommend';
-                // console.log(predictUrl);
-                const url = new URL(predictUrl);
-                url.searchParams.append('total_demand', total_demand);
-                url.searchParams.append('start_date', start_date);
-                url.searchParams.append('end_date', end_date);
+                const predictUrl = `http://192.168.0.137:6000/predict/recommend?start_date=${start_date}&end_date=${end_date}&total_demand=${total_demand}`;
+                console.log(predictUrl);
 
-                const response = await fetch(url, {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                });
-                const result = await response.json();
-
-                // console.log(result);
-
-                setPredictionData(result);
+                try {
+                    const response = await fetch(predictUrl);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    const result = await response.json();
+                    if (typeof result !== 'object' || result === null) {
+                        throw new TypeError('Expected an object as the response');
+                    }
+                    console.log(result);
+                    setPredictionData(result);
+                } catch (error) {
+                    console.error('Error fetching predictions:', error);
+                    setLoading(false);
+                }
                 setLoading(false);
             } catch (error) {
                 console.error('Error fetching predictions:', error);

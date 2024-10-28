@@ -8,6 +8,7 @@
     flex-direction: column;
 }
 
+
 .response-data-row1 {
     display: flex;
     flex-direction: row;
@@ -27,8 +28,21 @@
     transform: translateY(-5px);
     box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
-.response-data-row3{
 
+.response-data-row3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    animation: fadeIn 1s ease-in-out;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.response-data-row3:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .response-table-container-table {
@@ -40,13 +54,13 @@
 }
 
 .response-table-container-thead {
-    background-color: #f2f2f2;
-    color: #555555;
+    background-color: #00bfb2;
+    color: #000000;
 }
 
 .response-table-container-thead th, td {
     padding: 12px 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #000000;
 }
 
 .controls {
@@ -63,6 +77,13 @@
     margin-right: 20px;
 }
 
+.response-data button{
+    display: block;
+    margin-left: 30%;
+    width: 40%;
+    text-align: center;
+}
+
 .btn {
     padding: 10px 20px;
     background-color: #028090;
@@ -72,6 +93,6 @@
 }
 
 .btn:hover {
-    background-color: #05668D;
+    background-color: #00bfb2;
     color: #f0f3bd;
 }

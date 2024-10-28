@@ -1,0 +1,16 @@
+.response-row2{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 390px) {
+    .response-row2{
+        flex-direction: column;
+        gap: 10px;
+    }
+}

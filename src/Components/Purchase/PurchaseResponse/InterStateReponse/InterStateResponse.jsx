@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
+import './interState.css';
 
 function InterStateResponse() {
     const apiURL = process.env.REACT_APP_API_URL + `/inter-state/all`;
@@ -9,31 +10,19 @@ function InterStateResponse() {
 
     const [companyData, setCompanyData] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [visibleRows, setVisibleRows] = useState(10);
 
     useEffect(() => {
         const fetchCompanyData = async () => {
             try {
-
-                // Step 1: Fetch company names
                 const companyResponse = await fetch(apiURL);
                 const companies = await companyResponse.json();
 
-                // Debugging
-                // console.log(companies);
-
-                // Step 2: Fetch total generation and price for each company
                 const companyDetails = await Promise.all(
                     companies.map(async (company) => {
                         const apiURL2 = process.env.REACT_APP_API_URL + `/inter-state/${company}?start_date=${start_date}&end_date=${end_date}`;
-
-                        // Debugging
-                        // console.log(company);
-
                         const response = await fetch(apiURL2);
                         const result = await response.json();
-
-                        // Debugging
-                        // console.log(result);
 
                         return {
                             companyName: company,
@@ -56,30 +45,45 @@ function InterStateResponse() {
         }
     }, [start_date, end_date]);
 
+    const handleRowChange = (event) => {
+        const value = event.target.value;
+        setVisibleRows(value === "All" ? companyData.length : Number(value));
+    };
+
     return (
-        <div>
+        <div className="inter-state-response">
             <h2>Inter State Generated Energy</h2>
             {loading ? (
                 <p>Loading...</p>
             ) : (
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Company Name</th>
-                        <th>Total Generation</th>
-                        <th>Total Price</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {companyData.map((company, index) => (
-                        <tr key={index}>
-                            <td>{company.companyName}</td>
-                            <td>{company.totalGeneration || 'N/A'}</td>
-                            <td>{company.totalPrice || 'N/A'}</td>
+                <>
+                    <div className="controls">
+                        <label htmlFor="rows">Rows to display:</label>
+                        <select id="rows" value={visibleRows} onChange={handleRowChange}>
+                            <option value={10}>10</option>
+                            <option value={20}>20</option>
+                            <option value="All">All</option>
+                        </select>
+                    </div>
+                    <table>
+                        <thead>
+                        <tr>
+                            <th>Company Name</th>
+                            <th>Total Generation</th>
+                            <th>Total Price</th>
                         </tr>
-                    ))}
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                        {companyData.slice(0, visibleRows).map((company, index) => (
+                            <tr key={index}>
+                                <td>{company.companyName}</td>
+                                <td>{company.totalGeneration || 'N/A'}</td>
+                                <td>{company.totalPrice || 'N/A'}</td>
+                            </tr>
+                        ))}
+                        </tbody>
+                    </table>
+                </>
             )}
         </div>
     );

@@ -11,7 +11,7 @@ function PredictForm() {
 
     return (
         <div className="predict-main">
-            <h1>Predict Electricity</h1>
+            <h1 className="predict-main-heading">Predict Electricity</h1>
             <DateForm onResponse={handleResponse}/>
             {responseData && <ResponseComponent data={responseData}/>}
         </div>
