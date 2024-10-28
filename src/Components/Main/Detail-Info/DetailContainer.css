@@ -39,3 +39,25 @@
     font-size: 1.25rem;
     color: #4a5568;
 }
+
+@media (max-width: 390px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-container {
+        width: 90%;
+        margin: 10px 0;
+    }
+}@media (max-width: 430px) {
+    .main-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .detail-container {
+        width: 90%;
+        margin: 10px 0;
+    }
+}

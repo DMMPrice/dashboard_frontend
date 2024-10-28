@@ -16,6 +16,7 @@
     padding: 5px 10px;
     margin-left: 10px;
 }
+
 .table-area button:hover {
     background-color: #026c7c;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -68,4 +69,68 @@
     height: 100%;
     font-size: 1.5rem;
     color: #000;
+}
+
+@media (max-width: 390px) {
+    .table-area {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .table-area input {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .table-area button {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .table-area select {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+
+    .table-area table {
+        width: 100%;
+    }
+
+    .table-area th, .table-area td, .table-area tbody {
+        padding: 5px;
+        font-size: .75rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .table-area {
+        width: 100%;
+        padding: 0;
+    }
+
+    .table-area input {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .table-area button {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .table-area select {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+
+    .table-area table {
+        width: 100%;
+    }
+
+    .table-area th, .table-area td, .table-area tbody {
+        padding: 5px;
+        font-size: .75rem;
+    }
 }

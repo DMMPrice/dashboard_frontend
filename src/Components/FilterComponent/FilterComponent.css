@@ -34,18 +34,19 @@
     background-color: #0ff3bd;
 }
 
-@media (max-width: 750px) {
+@media (max-width: 430px) {
     .filter-component {
-        margin: 0 2rem;
+        width: 100%;
         flex-direction: column;
         align-items: stretch;
     }
 
     .filter-component input,
     .filter-component button {
+        width: 100%;
         margin-right: 0;
         margin-bottom: 10px;
-        flex: 1 1 auto; /* Flex-grow, flex-shrink, and flex-basis */
+        flex: 1 1 auto;
     }
 
     .filter-component button:last-child {

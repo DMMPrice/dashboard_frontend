@@ -4,7 +4,7 @@ import "./ConsumedArea.css";
 import TableArea from "../Table/TableArea";
 import FilterComponent from "../FilterComponent/FilterComponent";
 
-function    ConsumedArea() {
+function ConsumedArea() {
     const apiUrl = process.env.REACT_APP_API_URL + "/demand/all";
     const columns = [
         {Header: "Demand (Actual)", accessor: "Demand(Actual)"},

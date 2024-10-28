@@ -3,7 +3,7 @@ import * as XLSX from "xlsx";
 import "./TableArea.css";
 
 function TableArea({data, columns}) {
-    const [rowsToShow, setRowsToShow] = useState(100);
+    const [rowsToShow, setRowsToShow] = useState(10); // Default to 10 rows
 
     const handleExport = () => {
         const worksheet = XLSX.utils.json_to_sheet(data);

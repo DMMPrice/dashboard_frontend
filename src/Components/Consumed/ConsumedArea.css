@@ -12,3 +12,14 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+@media (max-width: 390px) {
+    .submit-area-graph {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    .consumed-main{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

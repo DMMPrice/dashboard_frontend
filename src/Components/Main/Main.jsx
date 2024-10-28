@@ -21,19 +21,19 @@ function Main() {
 
     const data = [
         {
-            "title": "Current MRR",
+            "title": "Current Demand",
             "value": "12.4k",
             "color": "black",
             "backgroundColor": "#00BFB2" // Corrected color code
         },
         {
-            "title": "Total Customers",
+            "title": "Current Prediction",
             "value": "16.6K",
             "color": "black",
             "backgroundColor": "#F0F3BD" // Corrected color code
         },
         {
-            "title": "Total Revenue",
+            "title": "Total Generated",
             "value": "1.2M",
             "color": "black",
             "backgroundColor": "#00BFB2" // Corrected color code
