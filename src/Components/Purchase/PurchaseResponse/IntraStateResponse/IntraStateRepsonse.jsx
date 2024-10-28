@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 
 function IntraStateResponse() {
+    const apiURL = process.env.REACT_APP_API_URL + "/intra-state/all";
+    // console.log(apiURL);
     const location = useLocation();
     const data = location.state?.data;
     const {start_date, end_date} = data || {};
@@ -12,19 +14,21 @@ function IntraStateResponse() {
     useEffect(() => {
         const fetchCompanyData = async () => {
             try {
-                // Step 1: Fetch company names
-                const companyResponse = await fetch(`http://13.233.144.75:4000/intra-state/all`);
+                const companyResponse = await fetch(apiURL);
                 const companies = await companyResponse.json();
 
-                // Step 2: Fetch total generation and price for each company
+                // Debugging
+                // console.log(companies);
+
                 const companyDetails = await Promise.all(
                     companies.map(async (company) => {
-                        // console.log(company);
-                        const response = await fetch(
-                            `http://13.233.144.75:4000/intra-state/${company}?start_date=${start_date}&end_date=${end_date}`
-                        );
+                        const apiURL2 = process.env.REACT_APP_API_URL + `/intra-state/${company}?start_date=${start_date}&end_date=${end_date}`;
+                        const response = await fetch(apiURL2);
                         const result = await response.json();
+
+                        // Debugging
                         // console.log(result);
+
                         return {
                             companyName: company,
                             totalGeneration: result[0]?.total_generate,

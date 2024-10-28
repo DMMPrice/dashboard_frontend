@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import Chart from 'react-apexcharts';
 import './ResponseComponent.css';
 import {CSVLink} from 'react-csv';
+import DetailContainer from "../Main/Detail-Info/DetailContainer";
 
 const ResponseComponent = ({data}) => {
     const [visibleRows, setVisibleRows] = useState(10);
@@ -30,7 +31,20 @@ const ResponseComponent = ({data}) => {
     const options = {
         chart: {
             type: 'bar',
-            height: 350
+            height: 350,
+            animations: {
+                enabled: true,
+                easing: 'easeinout',
+                speed: 800,
+                animateGradually: {
+                    enabled: true,
+                    delay: 150
+                },
+                dynamicAnimation: {
+                    enabled: true,
+                    speed: 350
+                }
+            }
         },
         xaxis: {
             type: 'datetime',
@@ -62,70 +76,79 @@ const ResponseComponent = ({data}) => {
         },
         dataLabels: {
             enabled: false
-        }
+        },
+        colors: ['#00bfb2']
     };
 
     const handlePurchaseClick = () => {
         navigate('/purchase', {state: {data}});
     };
 
-    return (
-        <div className="response-table-container">
-            <div className="table-wrapper">
-                <div className="table-section">
-                    <h2 className="response-table-container-heading">Response Data</h2>
-                    <table className="response-table-container-table">
-                        <thead className="response-table-container-thead">
-                        <tr>
-                            <th>Start Date</th>
-                            <th>End Date</th>
-                            <th>Total Demand</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>{data.start_date}</td>
-                            <td>{data.end_date}</td>
-                            <td>{data.total_demand !== null ? data.total_demand.toFixed(4) : 'No data available'}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                    <Chart options={options} series={series} type="bar" height={350}/>
-                </div>
+    const response_data = [
+        {
+            "title": "Start Date",
+            "value": data.start_date,
+            "color": "black",
+            "backgroundColor": "#00BFB2"
+        },
+        {
+            "title": "End Date",
+            "value": data.end_date,
+            "color": "black",
+            "backgroundColor": "#F0F3BD"
+        },
+        {
+            "title": "Total Demand",
+            "value": data.total_demand !== null ? data.total_demand.toFixed(4) : 'No data available',
+            "color": "black",
+            "backgroundColor": "#00BFB2"
+        }
+    ];
 
-                <div className="table-section">
-                    <div className="controls">
-                        <label htmlFor="rows">Rows to display:</label>
-                        <select id="rows" value={visibleRows} onChange={handleRowChange}>
-                            <option value={10}>10</option>
-                            <option value={20}>20</option>
-                            <option value={50}>50</option>
-                            <option value={100}>100</option>
-                            <option value="All">All</option>
-                        </select>
-                        <CSVLink data={csvData} filename="data.csv" className="btn">
-                            Download CSV
-                        </CSVLink>
-                    </div>
-                    <table className="response-table-container-table">
-                        <thead className="response-table-container-thead">
-                        <tr>
-                            <th>TimeStamp</th>
-                            <th>Demand (Actual)</th>
-                            <th>Demand (Pred)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {data.data.slice(0, visibleRows).map((item, index) => (
-                            <tr key={index}>
-                                <td>{item.TimeStamp}</td>
-                                <td>{item["Demand(Actual)"]}</td>
-                                <td>{item["Demand(Pred)"]}</td>
-                            </tr>
-                        ))}
-                        </tbody>
-                    </table>
+    return (
+        <div className="response-data">
+            <h2 className="response-table-container-heading">Predicted Data</h2>
+            <div className="response-data-row1">
+                {response_data.map((item, index) => (
+                    <DetailContainer key={index} title={item.title} value={item.value} color={item.color}
+                                     backgroundColor={item.backgroundColor}/>
+                ))}
+            </div>
+            <div className="response-data-row2">
+                <Chart options={options} series={series} type="bar" height={350}/>
+            </div>
+            <div className="response-data-row3">
+                <div className="controls">
+                    <label htmlFor="rows">Rows to display:</label>
+                    <select id="rows" value={visibleRows} onChange={handleRowChange}>
+                        <option value={10}>10</option>
+                        <option value={20}>20</option>
+                        <option value={50}>50</option>
+                        <option value={100}>100</option>
+                        <option value="All">All</option>
+                    </select>
+                    <CSVLink data={csvData} filename="data.csv" className="btn">
+                        Download CSV
+                    </CSVLink>
                 </div>
+                <table className="response-table-container-table">
+                    <thead className="response-table-container-thead">
+                    <tr>
+                        <th>TimeStamp</th>
+                        <th>Demand (Actual)</th>
+                        <th>Demand (Pred)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {data.data.slice(0, visibleRows).map((item, index) => (
+                        <tr key={index}>
+                            <td>{item.TimeStamp}</td>
+                            <td>{item["Demand(Actual)"]}</td>
+                            <td>{item["Demand(Pred)"]}</td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
             </div>
             <button onClick={handlePurchaseClick}>Purchase Electricity</button>
         </div>

@@ -9,11 +9,20 @@ function RenewableResponse() {
     const [responseData, setResponseData] = useState(null);
 
     useEffect(() => {
+        const backendUrl = process.env.REACT_APP_API_URL+`/renewable?start_date=${start_date}&end_date=${end_date}`;
+        // console.log(backendUrl);
         if (start_date && end_date) {
-            fetch(`http://13.233.144.75:4000/renewable?start_date=${start_date}&end_date=${end_date}`)
-                .then(response => response.json())
+            fetch(backendUrl)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}`);
+                    }
+                    return response.json();
+                })
                 .then(data => setResponseData(data))
-                .catch(error => console.error('Error fetching data:', error));
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
         }
     }, [start_date, end_date]);
 

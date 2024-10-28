@@ -12,7 +12,10 @@ function Recommendations() {
     useEffect(() => {
         const fetchPredictions = async () => {
             try {
-                const url = new URL('http://3.110.183.59:5500/predict/recommend');
+                // const predictUrl = "http://192.168.29.181:5500" + '/predict/recommend';
+                const predictUrl = "http://13.201.130.72:5500" + '/predict/recommend';
+                // console.log(predictUrl);
+                const url = new URL(predictUrl);
                 url.searchParams.append('total_demand', total_demand);
                 url.searchParams.append('start_date', start_date);
                 url.searchParams.append('end_date', end_date);
@@ -24,6 +27,9 @@ function Recommendations() {
                     },
                 });
                 const result = await response.json();
+
+                // console.log(result);
+
                 setPredictionData(result);
                 setLoading(false);
             } catch (error) {

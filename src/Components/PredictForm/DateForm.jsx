@@ -3,10 +3,12 @@ import moment from 'moment';
 import './DateForm.css';
 
 const DateForm = ({onResponse}) => {
+
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
 
     const handleSubmit = (event) => {
+        const apiUrl = process.env.REACT_APP_API_URL;
         event.preventDefault(); // Prevents the default form submission behavior
         console.log('Start Date:', startDate);
         console.log('End Date:', endDate);
@@ -16,7 +18,7 @@ const DateForm = ({onResponse}) => {
         const formattedEndDate = moment(endDate).format('YYYY-MM-DD HH:mm');
 
         // Send data through GET request with params start_date and end_date
-        const url = new URL('http://13.233.144.75:4000/demand/data_with_sum');
+        const url = new URL(`${apiUrl}/demand/data_with_sum`);
         url.searchParams.append('start_date', formattedStartDate);
         url.searchParams.append('end_date', formattedEndDate);
 
