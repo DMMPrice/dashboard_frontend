@@ -1,45 +1,45 @@
 .date-form {
     display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    max-width: 400px;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
     margin: 2rem auto;
     padding: 1rem;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .form-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
 }
 
 label {
     margin-bottom: 0.5rem;
+    margin-right: 1rem;
     font-weight: bold;
-    color: #333;
+    font-size: 1rem;
+    color: #333333FF;
 }
 
 input {
-    padding: 0.5rem;
+    padding: .5rem;
     font-size: 1rem;
-    border: 1px solid #ccc;
+    border: 1px solid #028090;
     border-radius: 4px;
 }
 
 input:focus {
-    border-color: #007bff;
+    border-color: #00bfb2;
     outline: none;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    box-shadow: 0 0 5px rgb(2, 128, 144);
 }
 
 button {
-    padding: 0.75rem;
+    padding: 0.5rem 1rem;
     font-size: 1rem;
     color: #fff;
-    background-color: #007bff;
+    background-color: #028090;
     border: none;
     border-radius: 4px;
     cursor: pointer;
@@ -47,5 +47,6 @@ button {
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #00bfb2;
+    color: #f0f3bd;
 }

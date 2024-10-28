@@ -36,7 +36,7 @@ function GraphArea({data}) {
                 data: data.map((item) => item["Demand(Actual)"]),
                 borderColor: "#028090",
                 backgroundColor: "#028090",
-                fill: false,
+                fill: true,
             }
         ],
     };

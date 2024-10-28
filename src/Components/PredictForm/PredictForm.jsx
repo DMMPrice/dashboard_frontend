@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import DateForm from './DateForm';
-import ResponseComponent from './ResponseComponent'; // Import the new component
+import ResponseComponent from './ResponseComponent';
 
 function PredictForm() {
     const [responseData, setResponseData] = useState(null);
@@ -10,8 +10,8 @@ function PredictForm() {
     };
 
     return (
-        <div>
-            <h1>Welcome to Predict</h1>
+        <div className="predict-main">
+            <h1>Predict Electricity</h1>
             <DateForm onResponse={handleResponse}/>
             {responseData && <ResponseComponent data={responseData}/>}
         </div>
