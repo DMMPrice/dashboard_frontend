@@ -25,7 +25,7 @@ function RenewableResponse() {
                 total_wind: data[0].total_wind,
                 total_wind_price: data[1].total_price,
                 total_solar: data2[0][0].total_solar,
-                total_solar_price: data2[1][0].total_price
+                total_solar_price: data2[1][0].total_price.toFixed(2)
             };
 
             setResponseData(combinedData);
