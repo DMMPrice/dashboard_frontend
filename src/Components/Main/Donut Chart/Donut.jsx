@@ -81,7 +81,7 @@ const DonutChart = () => {
 
     useEffect(() => {
         const fetchData = async (year) => {
-            const response = await fetch(`http://3.109.157.36:4000/demand/year?year=${year}`);
+            const response = await fetch(`https://dashboard-backend-zan6.onrender.com/demand/year?year=${year}`);
             const data = await response.json();
             return data;
         };

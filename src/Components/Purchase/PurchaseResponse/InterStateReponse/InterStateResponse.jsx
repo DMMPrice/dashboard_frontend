@@ -3,7 +3,8 @@ import {useLocation} from "react-router-dom";
 import './interState.css';
 
 function InterStateResponse() {
-    const apiURL = process.env.REACT_APP_API_URL + `/inter-state/all`;
+    // const apiURL = process.env.REACT_APP_API_URL + `/inter-state/all`;
+    const apiURL = "https://dashboard-backend-zan6.onrender.com" + `/inter-state/all`;
     const location = useLocation();
     const data = location.state?.data;
     const {start_date, end_date} = data || {};
@@ -20,7 +21,8 @@ function InterStateResponse() {
 
                 const companyDetails = await Promise.all(
                     companies.map(async (company) => {
-                        const apiURL2 = process.env.REACT_APP_API_URL + `/inter-state/${company}?start_date=${start_date}&end_date=${end_date}`;
+                        // const apiURL2 = process.env.REACT_APP_API_URL + `/inter-state/${company}?start_date=${start_date}&end_date=${end_date}`;
+                        const apiURL2 = "https://dashboard-backend-zan6.onrender.com" + `/inter-state/${company}?start_date=${start_date}&end_date=${end_date}`;
                         const response = await fetch(apiURL2);
                         const result = await response.json();
 

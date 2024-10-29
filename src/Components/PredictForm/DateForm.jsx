@@ -8,7 +8,8 @@ const DateForm = ({onResponse}) => {
     const [endDate, setEndDate] = useState('');
 
     const handleSubmit = (event) => {
-        const apiUrl = process.env.REACT_APP_API_URL;
+        // const apiUrl = process.env.REACT_APP_API_URL;
+        const apiUrl = "https://dashboard-backend-zan6.onrender.com";
         event.preventDefault(); // Prevents the default form submission behavior
         console.log('Start Date:', startDate);
         console.log('End Date:', endDate);

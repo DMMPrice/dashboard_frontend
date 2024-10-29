@@ -12,8 +12,8 @@ function RenewableResponse() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const backendUrl = `http://3.109.157.36:4000/wind/sum_wind?start_date=${start_date}&end_date=${end_date}`;
-            const backendUrl2 = `http://3.109.157.36:4000/solar/sum_solar?start_date=${start_date}&end_date=${end_date}`;
+            const backendUrl = `https://dashboard-backend-zan6.onrender.com/wind/sum_wind?start_date=${start_date}&end_date=${end_date}`;
+            const backendUrl2 = `https://dashboard-backend-zan6.onrender.com/solar/sum_solar?start_date=${start_date}&end_date=${end_date}`;
 
             const response = await fetch(backendUrl);
             const data = await response.json();
