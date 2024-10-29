@@ -27,7 +27,7 @@ function FilterComponent({onFilter, setLoading}) {
         <div className="filter-component">
             <input
                 type="text"
-                placeholder="Year (e.g., 2021)"
+                placeholder="Financial Year (e.g., 2021)"
                 value={year}
                 onChange={(e) => setYear(e.target.value)}
             />

@@ -1,8 +1,9 @@
+// src/Components/NavBar/NavBar.jsx
 import React from 'react';
 import {Link} from 'react-router-dom';
 import './NavBar.css';
 
-const NavBar = () => {
+const NavBar = ({isAuthenticated, handleLogout}) => {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
             <div className="container-fluid">
@@ -31,6 +32,15 @@ const NavBar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/predict">Predicted</Link>
                         </li>
+                        {isAuthenticated ? (
+                            <li className="nav-item">
+                                <button className="btn" onClick={handleLogout}>Log Out</button>
+                            </li>
+                        ) : (
+                            <li className="nav-item">
+                                <Link className="btn" to="/signin">Sign In</Link>
+                            </li>
+                        )}
                     </ul>
                 </div>
             </div>

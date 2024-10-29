@@ -50,6 +50,26 @@ function InterStateResponse() {
         setVisibleRows(value === "All" ? companyData.length : Number(value));
     };
 
+    const downloadCSV = () => {
+        const headers = ["Company Name", "Total Generation", "Total Price"];
+        const rows = companyData.map(company => [
+            company.companyName,
+            company.totalGeneration || 'N/A',
+            company.totalPrice || 'N/A'
+        ]);
+
+        let csvContent = "data:text/csv;charset=utf-8,"
+            + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "inter_state_data.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div className="inter-state-response">
             <h2>Inter State Generated Energy</h2>
@@ -64,6 +84,7 @@ function InterStateResponse() {
                             <option value={20}>20</option>
                             <option value="All">All</option>
                         </select>
+                        <button onClick={downloadCSV}>Download CSV</button>
                     </div>
                     <table>
                         <thead>

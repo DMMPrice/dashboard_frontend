@@ -108,7 +108,7 @@ const ResponseComponent = ({data}) => {
     return (
         <div className="response-data">
             <h2 className="response-table-container-heading">Predicted Data</h2>
-            <button onClick={handlePurchaseClick}>Purchase Electricity</button>
+            <button onClick={handlePurchaseClick}>Power Procurement</button>
             <div className="response-data-row1">
                 {response_data.map((item, index) => (
                     <DetailContainer key={index} title={item.title} value={item.value} color={item.color}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import "./intrastate.css"
+import "./intrastate.css";
 
 function IntraStateResponse() {
     const apiURL = process.env.REACT_APP_API_URL + "/intra-state/all";
@@ -50,6 +50,26 @@ function IntraStateResponse() {
         setVisibleRows(value === "All" ? companyData.length : Number(value));
     };
 
+    const downloadCSV = () => {
+        const headers = ["Company Name", "Total Generation", "Total Price"];
+        const rows = companyData.map(company => [
+            company.companyName,
+            company.totalGeneration || 'N/A',
+            company.totalPrice || 'N/A'
+        ]);
+
+        let csvContent = "data:text/csv;charset=utf-8,"
+            + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+
+        const encodedUri = encodeURI(csvContent);
+        const link = document.createElement("a");
+        link.setAttribute("href", encodedUri);
+        link.setAttribute("download", "intra_state_data.csv");
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     return (
         <div className="intra-state-response">
             <h2>Intra State Generated Energy</h2>
@@ -64,6 +84,7 @@ function IntraStateResponse() {
                             <option value={20}>20</option>
                             <option value="All">All</option>
                         </select>
+                        <button onClick={downloadCSV}>Download CSV</button>
                     </div>
                     <table>
                         <thead>

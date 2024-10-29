@@ -4,3 +4,25 @@
     justify-content: center;
     align-items: center;
 }
+
+.inter-state-response thead {
+    background-color: #00bfb2;
+}
+
+.inter-state-response th, .inter-state-response td {
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #000000;
+}
+
+
+@media (max-width: 390px) {
+    .inter-state-response {
+        width: 100%;
+    }
+
+    .inter-state-response table {
+        width: 100%;
+        font-size: 1rem;
+    }
+}
