@@ -74,7 +74,8 @@ const PairColumnChart = () => {
 
     useEffect(() => {
         const fetchData = async (year) => {
-            const response = await fetch(`https://dashboard-backend-zan6.onrender.com/demand/year?year=${year}`);
+            // const response = await fetch(`https://dashboard-backend-zan6.onrender.com/demand/year?year=${year}`);
+            const response = await fetch(`https://api.powercasting.online/demand/year?year=${year}`);
             const data = await response.json();
             return data;
         };

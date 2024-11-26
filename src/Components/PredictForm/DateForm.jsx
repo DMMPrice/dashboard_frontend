@@ -9,7 +9,8 @@ const DateForm = ({onResponse}) => {
 
     const handleSubmit = (event) => {
         // const apiUrl = process.env.REACT_APP_API_URL;
-        const apiUrl = "https://dashboard-backend-zan6.onrender.com";
+        // const apiUrl = "https://dashboard-backend-zan6.onrender.com";
+        const apiUrl = "https://api.powercasting.online";
         event.preventDefault(); // Prevents the default form submission behavior
         console.log('Start Date:', startDate);
         console.log('End Date:', endDate);
